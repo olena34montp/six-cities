@@ -1,5 +1,4 @@
-import Card from '../../components/card/card'
-import { Setting } from '../../const';
+import Card from '../../components/card/card';
 
 type MainPageProps = {
     cardsCount: number;
@@ -8,7 +7,7 @@ type MainPageProps = {
 function MainPage({ cardsCount }: MainPageProps): JSX.Element {
     function cards () {
         const result = [];
-        for(let i = 1; i < cardsCount; i++) {
+        for(let i = 1; i <= cardsCount; i++) {
             result.push(<Card key={i}/>);
         }
 
