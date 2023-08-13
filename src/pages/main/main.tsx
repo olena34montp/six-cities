@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Card from '../../components/card/card';
 import Logo from '../../components/logo/logo';
 
@@ -17,6 +18,9 @@ function MainPage({ cardsCount }: MainPageProps): JSX.Element {
     }
     return (
         <div className="page page--gray page--main">
+            <Helmet>
+                <title>6 cities. Main page</title>
+            </Helmet>
             <header className="header">
                 <div className="container">
                     <div className="header__wrapper">
