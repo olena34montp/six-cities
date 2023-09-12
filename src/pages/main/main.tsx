@@ -1,21 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import Card from '../../components/card/card';
+import { OfferType } from '../../types/offer';
 import Logo from '../../components/logo/logo';
+import CardList from '../../components/card-list/card-list';
 
 type MainPageProps = {
-    cardsCount: number;
+    offers: OfferType[];
 }
 
-function MainPage({ cardsCount }: MainPageProps): JSX.Element {
-    function cards () {
-        const result = [];
-        for(let i = 1; i <= cardsCount; i++) {
-            result.push(<Card key={i}/>);
-        }
-
-        return result;
-    }
+function MainPage({ offers }: MainPageProps): JSX.Element {
     return (
         <div className="page page--gray page--main">
             <Helmet>
@@ -89,12 +82,12 @@ function MainPage({ cardsCount }: MainPageProps): JSX.Element {
                     <div className="cities__places-container container">
                         <section className="cities__places places">
                             <h2 className="visually-hidden">Places</h2>
-                            <b className="places__found">312 places to stay in Amsterdam</b>
+                            <b className="places__found">{offers.length} places to stay in Amsterdam</b>
                             <form className="places__sorting" action="#" method="get">
                                 <span className="places__sorting-caption">Sort by</span>
                                 <span className="places__sorting-type" tabIndex={0}>
                                     Popular
-                                    <svg className="places__sorting-arrow" width="7" height="4">
+                                    <svg className="places__sorting-arrow" width={7} height={4}>
                                         <use xlinkHref="#icon-arrow-select"></use>
                                     </svg>
                                 </span>
@@ -106,7 +99,7 @@ function MainPage({ cardsCount }: MainPageProps): JSX.Element {
                                 </ul>
                             </form>
                             <div className="cities__places-list places__list tabs__content">
-                                {cards()}
+                                <CardList offers={offers}/>
                             </div>
                         </section>
                         <div className="cities__right-section">
