@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { OfferType } from '../../types/offer';
 import Logo from '../../components/logo/logo';
+import CardList from '../../components/card-list/card-list';
 
 type MainPageProps = {
     offers: OfferType[];
@@ -98,7 +99,7 @@ function MainPage({ offers }: MainPageProps): JSX.Element {
                                 </ul>
                             </form>
                             <div className="cities__places-list places__list tabs__content">
-                                {/* code cards */}
+                                <CardList offers={offers}/>
                             </div>
                         </section>
                         <div className="cities__right-section">
