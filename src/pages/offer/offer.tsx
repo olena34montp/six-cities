@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { OfferType } from "../../types/offer";
 import Logo from "../../components/logo/logo";
 
-function OfferPage(): JSX.Element {
+type OfferPageProps = {
+    offers: OfferType[];
+}
+
+function OfferPage({ offers }: OfferPageProps): JSX.Element {
     return (
         <div className="page">
             <Helmet>

@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Logo from "../../components/logo/logo";
+import { OfferType } from "../../types/offer";
 
-function FavoritesPage(): JSX.Element {
+type FavoritesPageProps = {
+    offers: OfferType[];
+}
+
+function FavoritesPage({ offers }: FavoritesPageProps): JSX.Element {
     return (
         <div className="page">
             <Helmet>
