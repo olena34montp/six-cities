@@ -1,19 +1,26 @@
 import { Link } from "react-router-dom";
 import { OfferType } from "../../types/offer";
+import { useState } from "react";
 
 type CardProps = {
     offer: OfferType;
 }
 
 function Card({ offer }: CardProps): JSX.Element {
+    const [activeCard, setActiveCard] = useState(offer);
+
+    function handleMouseOver() {
+        setActiveCard(offer);
+    }
+
     return (
-        <article className="cities__place-card place-card">
-            {offer.isPremium ?
-                <div className="place-card__mark">
+        <article onMouseOver={handleMouseOver} className="cities__place-card place-card">
+            {offer.isPremium &&
+                (<div className="place-card__mark">
                     <span>Premium</span>
-                </div> : ''}
+                </div>)}
             <div className="cities__image-wrapper place-card__image-wrapper">
-                <Link to={`/offer/${offer.id}`}>
+                <Link to={`/offer/${activeCard.id}`}>
                     <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt={offer.title} />
                 </Link>
             </div>
@@ -37,7 +44,7 @@ function Card({ offer }: CardProps): JSX.Element {
                     </div>
                 </div>
                 <h2 className="place-card__name">
-                    <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
+                    <Link to={`/offer/${activeCard.id}`}>{offer.title}</Link>
                 </h2>
                 <p className="place-card__type">{offer.type}</p>
             </div>
